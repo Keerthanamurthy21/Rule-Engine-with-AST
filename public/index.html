@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css\style.css">
+    <title>Rule Engine</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Rule Engine Management</h1>
+     <!-- List of Rules --> 
+     <div class="card mb-4 shadow">
+        <div class="card-header">Rules List</div>
+        <div class="card-body">
+            <ul id="rulesList" class="list-group"></ul>
+        </div>
+    </div>
+    <!-- Rule Creation Form -->
+    <div class="row  mb-4">
+    <div class="col-sm-12 col-md-4 mb-3 shadow">
+        <div class="card-header">Create Rule</div>
+        <div class="card-body">
+            <form id="createRuleForm">
+                <div class="mb-3">
+                    <label for="ruleName" class="form-label">Rule Name</label>
+                    <input type="text" class="form-control" id="ruleName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="ruleString" class="form-label">Rule String</label>
+                    <input type="text" class="form-control" id="ruleString" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Rule</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4 mb-3 shadow">
+        <div class="card-header">Create Attribute</div>
+        <div class="card-body d-flex flex-column">
+            <form id="createAttributeForm" class="mb3">
+                <div class="mb-3">
+                    <label for="ruleName" class="form-label">Attribute Name</label>
+                    <input type="text" class="form-control" id="attributeName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="dataType" class="form-label">Data Type</label>
+                    <select class="form-control" id="dataType" required>
+                        <option value="INT">INT</option>
+                        <option value="VARCHAR">VARCHAR</option>
+                        <option value="FLOAT">FLOAT</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Attribute</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4 mb-3 shadow">
+        <div class="card-header">Modify Rule</div>
+        <div class="card-body">
+            <form id="modifyRuleForm">
+                <div class="mb-3">
+                    <label for="ruleId" class="form-label">Rule ID</label>
+                    <input type="number" class="form-control" id="ruleId" required>
+                </div>
+                <div class="mb-3">
+                    <label for="oldExpression" class="form-label">Old Expression</label>
+                    <input type="text" class="form-control" id="oldExpression" required>
+                </div>
+                <div class="mb-3">
+                    <label for="newExpression" class="form-label">New Expression</label>
+                    <input type="text" class="form-control" id="newExpression" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Modify Rule</button>
+            </form>
+        </div>
+    </div> 
+    </div>
+<div class="row mb-4">
+    <div class="col-sm-12 col-md-4 mb-3 shadow">
+        <div class="card-header">Combine Rules</div>
+        <div class="card-body">
+            <form id="combineRulesForm">
+                <div class="mb-3">
+                    <label class="form-label">Select Rules to Combine</label>
+                    <div id="rulesCheckboxes" class="form-check">
+                        <!-- Checkboxes for rules will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="operator" class="form-label">Select Operator</label>
+                    <select class="form-control" id="operator" required>
+                        <option value="AND">AND</option>
+                        <option value="OR">OR</option>
+                        <option value="NOT">NOT</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Combine Rules</button>
+            </form>
+            <div id="combinedRuleResult" class="mt-3"></div> <!-- Display combined rule result here -->
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4 mb-3 shadow">
+        <div class="card-header">Add User Data</div>
+            <div class="card-body">
+            <form id="createUserDataForm">
+                    <div class="mb-3">
+                        <label for="userId" class="form-label">User ID</label>
+                        <input type="number" class="form-control" id="userId" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" class="form-control" id="age" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="department" class="form-label">Department</label>
+                        <input type="text" class="form-control" id="department" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="salary" class="form-label">salary</label>
+                        <input type="text" class="form-control" id="salary" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="experience" class="form-label">experience</label>
+                        <input type="text" class="form-control" id="experience" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add User Data</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4 mb-3 shadow">
+            <div class="card-header">Evaluate Rules</div>
+            <div class="card-body">
+                <form id="evaluateForm">
+                    <div class="mb-3">
+                        <label for="UserId" class="form-label">User ID</label>
+                        <input type="text" class="form-control" id="UserId" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Evaluate</button>
+                </form>
+                <div id="evaluationResults" class="mt-3"></div> <!-- For displaying results -->
+            </div>
+        </div>
+         
+</div>
+    <!-- User Data Form -->
+ <div class="row mb-4">
+    <div class="col-sm-12 col-md-4 mb-3 shadow">
+        <div class="card-header">Delete Rule</div>
+        <div class="card-body">
+            <form id="deleteRuleForm">
+                <div class="mb-3">
+                    <label for="ruleName" class="form-label">Rule Id</label>
+                    <input type="text" class="form-control" id="ruleIdToDelete" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Delete Rule</button>
+            </form>
+        </div>
+    </div>   
+    <div class="col-sm-12 col-md-4 mb-3 shadow">
+        <div class="card-header">Delete Attribute</div>
+        <div class="card-body">
+            <form id="DeleteAttributeForm">
+                <div class="mb-3">
+                    <label for="attributeName" class="form-label">Attribute Name</label>
+                    <input type="text" class="form-control" id="attributeName" required> <!-- Ensure this ID matches -->
+                </div>
+                <button type="submit" class="btn btn-primary">Delete Attribute</button> <!-- Ensure button text is correct -->
+            </form>
+        </div>
+    </div> 
+    <!-- Evaluation Results -->
+<div class="col-sm-12 col-md-4 mb-3 shadow">
+    <div class="card-header">Evaluation Results</div>
+    <div class="card-body">
+        <button class="btn btn-info mb-3" id="fetchEvaluationResults">View Evaluation Results</button>
+        <ul id="evaluationResultsList" class="list-group"></ul>
+    </div>
+</div> 
+</div>
+</div>  
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

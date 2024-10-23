@@ -1,0 +1,38 @@
+body {
+    background-color:  #f8f9fa;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
+.card {
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+}
+
+.card-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #8002cf;
+    color: white;
+    padding: 0.5rem;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.btn-primary {
+    background-color: #8002cf;  
+    border: none;
+}
+
+.btn-info {
+    background-color: #8002cf;
+    border: none;
+    color: #f8f9fa;
+}
+
